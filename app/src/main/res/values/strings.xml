@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">ACT</string>
-
     <!--    LOGIN PAGE -->
     <string name="Username">Username</string>
     <string name="Password">Password</string>
