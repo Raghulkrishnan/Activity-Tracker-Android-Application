@@ -1,3 +1,27 @@
 <resources>
-    <string name="app_name">ActivityTracker</string>
+    <string name="app_name">ACT</string>
+
+    <!--    LOGIN PAGE -->
+    <string name="Username">Username</string>
+    <string name="Password">Password</string>
+    <string name="loginBtn">Login</string>
+    <string name="registerBtn">Register</string>
+    <string name="usernamePlaceholder">enter username..</string>
+    <string name="passwordPlaceholder">enter password..</string>
+
+    <!--    REGISTRATION PAGE -->
+    <string name="Fname">First Name</string>
+    <string name="LName">Last Name</string>
+    <string name="Gender">Gender</string>
+    <string name="dob">Date of Birth</string>
+    <string name="createUName">Create User Name</string>
+    <string name="createPwd">Create Password</string>
+    <string name="confirmPwd">Confirm Password</string>
+    <string name="singUpBtn">Sign Up!</string>
+    <string name="backToLogin">Login Page</string>
+
+    <!--    NAV BAR-->
+    <string name="main_home">HOME</string>
+    <string name="main_goals">GOALS</string>
+    <string name="main_profile">PROFILE</string>
 </resources>
