@@ -1,2 +1,2 @@
 # ITMD555-Shruthi-Raghulkrishnan
-Final Project Readme file
+Final Project - Activity Tracker
