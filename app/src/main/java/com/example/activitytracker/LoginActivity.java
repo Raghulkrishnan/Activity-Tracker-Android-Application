@@ -20,8 +20,8 @@ public class LoginActivity extends AppCompatActivity {
 //        db = SqlHelper.getInstance(getApplicationContext());
     }
     public void onRegisterBtnClick(View view){
-//        Intent intent = new Intent(com.example.activitytracker.LoginActivity.this, RegisterActivity.class);
-//        startActivity(intent);
+        Intent intent = new Intent(com.example.activitytracker.LoginActivity.this, RegisterActivity.class);
+        startActivity(intent);
     }
 
     public void onLoginBtnClick(View view){
