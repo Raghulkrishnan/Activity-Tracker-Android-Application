@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <TabHost android:id="@android:id/tabhost"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -36,19 +35,21 @@
                 android:id="@+id/goToHomeBtn"
                 style="@style/main_tab_bottom"
                 android:layout_marginTop="2.0dip"
-            android:text="ACTIVITY" />
-
+                android:drawableTop="@drawable/home_icon"
+                android:text="ACTIVITY" />
 
             <RadioButton
                 android:id="@+id/goToGoalsBtn"
                 style="@style/main_tab_bottom"
                 android:layout_marginTop="2.0dip"
+                android:drawableTop="@drawable/goals_icon"
                 android:text="GOALS" />
 
             <RadioButton
                 android:id="@+id/goToProfileBtn"
                 style="@style/main_tab_bottom"
                 android:layout_marginTop="2.0dip"
+                android:drawableTop="@drawable/profile_icon"
                 android:text="PROFILE" />
         </RadioGroup>
 

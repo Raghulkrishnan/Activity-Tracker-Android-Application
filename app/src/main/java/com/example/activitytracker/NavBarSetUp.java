@@ -22,7 +22,7 @@ public class NavBarSetUp extends TabActivity implements CompoundButton.OnChecked
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_navbar_home);
 
-       // this.activityPage = new Intent(this,HomeActivity.class);
+//        this.activityPage = new Intent(this,HomeActivity.class);
 //        this.goalPage = new Intent(this,GoalActivity.class);
 //        this.profilePage = new Intent(this,ProfileActivity.class);
 
@@ -58,11 +58,11 @@ public class NavBarSetUp extends TabActivity implements CompoundButton.OnChecked
         this.navBar = getTabHost();
         TabHost localTabHost = this.navBar;
 
-//        localTabHost.addTab(buildTabSpec("home", R.string.main_home, R.drawable.home_icon, this.activityPage));
-//
-//        localTabHost.addTab(buildTabSpec("goals", R.string.main_goals, R.drawable.goals_icon, this.goalPage));
-//
-//        localTabHost.addTab(buildTabSpec("profile", R.string.main_profile, R.drawable.profile_icon, this.profilePage));
+        localTabHost.addTab(buildTabSpec("home", R.string.main_home, R.drawable.home_icon, this.activityPage));
+
+        localTabHost.addTab(buildTabSpec("goals", R.string.main_goals, R.drawable.goals_icon, this.goalPage));
+
+        localTabHost.addTab(buildTabSpec("profile", R.string.main_profile, R.drawable.profile_icon, this.profilePage));
     }
 
     private TabHost.TabSpec buildTabSpec(String tag, int resLabel, int resIcon, final Intent content) {
