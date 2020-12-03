@@ -31,13 +31,13 @@ public class WelcomeActivity extends Activity implements View.OnClickListener {
         Intent i = null;
         switch (v.getId()) {
             case R.id.btnActivity:
-                i = new Intent(this, MainActivity.class);
+//                i = new Intent(this, MainActivity.class);
                 break;
             case R.id.btnGoal:
-                i = new Intent(this, MainGoalActivity.class);
+//                i = new Intent(this, MainGoalActivity.class);
                 break;
             case R.id.btnProfile:
-                i = new Intent(this, ProfileActivity.class);
+//                i = new Intent(this, ProfileActivity.class);
                 break;
         }
         startActivity(i);
