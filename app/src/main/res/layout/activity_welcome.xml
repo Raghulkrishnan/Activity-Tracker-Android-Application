@@ -2,39 +2,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity"
-    android:background="@drawable/start_page">
+    android:background="@color/home_bg">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:background="@drawable/start_page"
         android:padding="10dp"
         android:gravity="center">
         <Button
-            android:id="@+id/btnSignUp"
+            android:id="@+id/btnActivity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="12dp"
             android:layout_margin="4dp"
-            android:text="SIGN UP"
-            android:background="@drawable/button_shape"
-            style="@style/DefaultButtonText" />
+            android:text="ACTIVITIES" />
         <Button
-            android:id="@+id/btnSignIn"
+            android:id="@+id/btnGoal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="12dp"
             android:layout_margin="4dp"
-            android:text="SIGN IN"
-            style="@style/DefaultButtonText"
-            android:background="@drawable/button_shape" />
+            android:text="GOALS"/>
+        <Button
+            android:id="@+id/btnProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:layout_margin="4dp"
+            android:text="PROFILE"/>
     </LinearLayout>
 
 </RelativeLayout>

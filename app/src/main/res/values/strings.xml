@@ -1,26 +1,37 @@
 <resources>
-    <string name="app_name">ACT</string>
-    <!--    LOGIN PAGE -->
-    <string name="Username">Username</string>
-    <string name="Password">Password</string>
-    <string name="loginBtn">Login</string>
-    <string name="registerBtn">Register</string>
-    <string name="usernamePlaceholder">enter username..</string>
-    <string name="passwordPlaceholder">enter password..</string>
+    <string name="app_name">ACTIVITY TRACKER</string>
+    <array name="act_type">
+        <item>Miles</item>
+        <item>Pounds</item>
+        <item>Minutes</item>
+        <item>Count</item>
+        <item>Steps</item>
+    </array>
 
-    <!--    REGISTRATION PAGE -->
-    <string name="Fname">First Name</string>
-    <string name="LName">Last Name</string>
-    <string name="Gender">Gender</string>
-    <string name="dob">Date of Birth</string>
-    <string name="createUName">Create User Name</string>
-    <string name="createPwd">Create Password</string>
-    <string name="confirmPwd">Confirm Password</string>
-    <string name="singUpBtn">Sign Up!</string>
-    <string name="backToLogin">Login Page</string>
+    <array name="goals">
+        <item>Walking</item>
+        <item>Skipping</item>
+        <item>Planks</item>
+        <item>PushUps</item>
+        <item>SitUps</item>
+        <item>Yoga</item>
+    </array>
 
-    <!--    NAV BAR-->
-    <string name="main_home">HOME</string>
-    <string name="main_goals">GOALS</string>
-    <string name="main_profile">PROFILE</string>
+    <array name="goalRoutines">
+        <item>Daily</item>
+        <item>Weekly</item>
+        <item>Monthly</item>
+    </array>
+
+    <array name="goalStatus">
+        <item>Pending</item>
+        <item>Completed</item>
+        <item>Dropped</item>
+    </array>
+
+    <array name="gender">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </array>
 </resources>
