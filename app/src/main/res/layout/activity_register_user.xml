@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_bg">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/loginHeadImage"
+                android:layout_width="180dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="12dp"
+                android:adjustViewBounds="true"
+                android:elevation="2dp"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center"
+                android:src="@drawable/logo"/>
+
+            <EditText
+                android:id="@+id/registerFName"
+                android:layout_width="315dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="35dp"
+                android:layout_marginBottom="30dp"
+                android:layout_gravity="center"
+                android:ems="10"
+                android:hint="FIRST NAME"
+                android:textColorHint="@color/white"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/registerLName"
+                android:layout_width="316dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="25dp"
+                android:layout_gravity="center"
+                android:ems="10"
+                android:hint="LAST NAME"
+                android:textColorHint="@color/white"
+                android:inputType="text" />
+
+            <Spinner
+                android:id="@+id/registerGender"
+                android:layout_width="316dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="25dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:entries="@array/gender" />
+
+            <EditText
+                android:id="@+id/registerAge"
+                android:layout_width="316dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="25dp"
+                android:layout_gravity="center"
+                android:ems="10"
+                android:hint="AGE"
+                android:textColorHint="@color/white"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/registerEmail"
+                android:layout_width="316dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="25dp"
+                android:layout_gravity="center"
+                android:ems="10"
+                android:hint="EMAIL ID"
+                android:textColorHint="@color/white"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/registerCreatePwd"
+                android:layout_width="316dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="25dp"
+                android:layout_gravity="center"
+                android:ems="10"
+                android:hint="CREATE PASSWORD"
+                android:textColorHint="@color/white"
+                android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/registerConfirmPwd"
+                android:layout_width="316dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="25dp"
+                android:layout_gravity="center"
+                android:ems="10"
+                android:hint="CONFIRM PASSWORD"
+                android:textColorHint="@color/white"
+                android:inputType="textPassword" />
+
+            <Button
+                android:id="@+id/registerNewUser"
+                android:layout_width="280dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:onClick="onSignUpClick"
+                android:text="SIGN UP" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/registerGoToLogin"
+                android:layout_width="280dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:onClick="onCancelClick"
+                android:text="CANCEL" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
