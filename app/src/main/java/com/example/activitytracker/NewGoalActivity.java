@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
 public class NewGoalActivity extends AppCompatActivity {
     Spinner goalName;
     Spinner goalRoutine;
@@ -23,9 +22,7 @@ public class NewGoalActivity extends AppCompatActivity {
 
     EditText goalFeedback;
     RatingBar goalRating;
-
     Button addGoal;
-
     DatabaseReference dbGoals;
 
     @Override
@@ -55,7 +52,6 @@ public class NewGoalActivity extends AppCompatActivity {
             }
         });
     }
-
     //adding in db
     private void addGoal(){
         String name = goalName.getSelectedItem().toString();
