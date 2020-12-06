@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/home_bg">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/profileFName"
+                android:layout_width="315dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="35dp"
+                android:layout_marginBottom="30dp"
+                android:layout_gravity="center"
+                android:ems="10"
+                android:hint="FIRST NAME"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/profileLName"
+                android:layout_width="316dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="25dp"
+                android:layout_gravity="center"
+                android:ems="10"
+                android:hint="LAST NAME"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/profileEmail"
+                android:layout_width="316dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:ems="10"
+                android:hint="EMAIL ID"
+                android:inputType="textEmailAddress" />
+
+            <TextView
+                android:id="@+id/emailVerified"
+                android:layout_marginLeft="60dp"
+                android:textSize="17sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Verified"/>
+
+            <Button
+                android:id="@+id/resetPwdBtn"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="150dp"
+                android:onClick="resetPwdBtnClick"
+                android:text="CHANGE PASSWORD" />
+
+            <Button
+                android:id="@+id/saveProfileBtn"
+                android:layout_width="280dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:onClick="saveProfileBtnClick"
+                android:text="SAVE CHANGES" />
+
+            <Button
+                android:id="@+id/logoutBtn"
+                android:layout_width="280dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:onClick="logoutBtnClick"
+                android:text="LOGOUT" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
