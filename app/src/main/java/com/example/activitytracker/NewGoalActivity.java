@@ -13,8 +13,10 @@ import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
 public class NewGoalActivity extends AppCompatActivity {
     Spinner goalName;
     Spinner goalRoutine;
@@ -22,8 +24,11 @@ public class NewGoalActivity extends AppCompatActivity {
 
     EditText goalFeedback;
     RatingBar goalRating;
+
     Button addGoal;
+
     DatabaseReference dbGoals;
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +52,10 @@ public class NewGoalActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 addGoal();
-                Intent intent = new Intent(NewGoalActivity.this, MainGoalActivity.class);
-                startActivity(intent);
             }
         });
     }
+
     //adding in db
     private void addGoal(){
         String name = goalName.getSelectedItem().toString();
@@ -63,10 +67,17 @@ public class NewGoalActivity extends AppCompatActivity {
 
         String goalId = dbGoals.push().getKey();
 
-        Goal goal = new Goal("1", goalId, name, routine, status, feedback, rating);
+        //user id
+        final String UID = (mAuth.getCurrentUser()).getUid();
+
+        //USER ID ADDED
+        Goal goal = new Goal(UID, goalId, name, routine, status, feedback, rating);
 
         dbGoals.child(goalId).setValue(goal);
 
         Toast.makeText(this, "Goal Added", Toast.LENGTH_LONG).show();
+
+        Intent intent = new Intent(NewGoalActivity.this, NavBarActivity.class);
+        startActivity(intent);
     }
 }
