@@ -66,7 +66,7 @@ public class ProfileActivity extends AppCompatActivity {
         }
 
         if(user.getEmail() != null){
-             profileEmail.setText(user.getEmail());
+            profileEmail.setText(user.getEmail());
         }
 
         if(user.isEmailVerified()){
@@ -92,9 +92,6 @@ public class ProfileActivity extends AppCompatActivity {
 
     public void saveProfileBtnClick(View view){
         saveUserInformation();
-
-        Intent intent = new Intent(com.example.activitytracker.ProfileActivity.this, ProfileActivity.class);
-        startActivity(intent);
     }
 
     private void saveUserInformation() {
@@ -135,7 +132,8 @@ public class ProfileActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(getApplicationContext(), "Profile Updated", Toast.LENGTH_SHORT).show();
-//                            loadUserInformation();
+                            loadUserInformation();
+
                         }
                     }
                 });
@@ -148,6 +146,9 @@ public class ProfileActivity extends AppCompatActivity {
                         }
                     }
                 });
+
+                Intent intent = new Intent(com.example.activitytracker.ProfileActivity.this, NavBarActivity.class);
+                startActivity(intent);
             }
         }
     }
@@ -197,4 +198,5 @@ public class ProfileActivity extends AppCompatActivity {
         Intent intent = new Intent(com.example.activitytracker.ProfileActivity.this, LoginActivity.class);
         startActivity(intent);
     }
+
 }
