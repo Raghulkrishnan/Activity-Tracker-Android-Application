@@ -6,6 +6,7 @@
         <item>Minutes</item>
         <item>Count</item>
         <item>Steps</item>
+        <item>Days</item>
     </array>
 
     <array name="goals">
@@ -13,11 +14,16 @@
         <item>Skipping</item>
         <item>Planks</item>
         <item>PushUps</item>
+        <item>PullUps</item>
         <item>SitUps</item>
+        <item>Squats</item>
+        <item>Meditation</item>
         <item>Yoga</item>
+        <item>Drink Water</item>
     </array>
 
     <array name="goalRoutines">
+        <item>Hourly</item>
         <item>Daily</item>
         <item>Weekly</item>
         <item>Monthly</item>
@@ -34,4 +40,8 @@
         <item>Female</item>
         <item>Other</item>
     </array>
+
+    <string name="main_home">HOME</string>
+    <string name="main_goal">GOAL</string>
+    <string name="main_profile">PROFILE</string>
 </resources>

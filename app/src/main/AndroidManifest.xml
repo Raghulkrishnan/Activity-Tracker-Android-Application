@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.activitytracker">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,13 +15,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ActivityTracker">
-        <activity android:name=".WelcomeActivity"></activity>
-        <activity android:name=".NewGoalActivity"></activity>
-        <activity android:name=".NewUserActivity"></activity>
-        <activity android:name=".RegisterUserActivity"></activity>
-        <activity android:name=".MainGoalActivity"></activity>
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".ProfileActivity"></activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/map_key" />
+        <uses-library android:name="org.apache.http.legacy" android:required="false" />
+
+        <activity android:name=".WelcomeActivity" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".RegisterUserActivity" />
+        <activity android:name=".MainGoalActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".NewGoalActivity" />
+        <activity android:name=".NavBarActivity" />
+        <activity android:name=".NewUserActivity" />
 
         <activity android:name=".SplashActivity">
             <intent-filter>
