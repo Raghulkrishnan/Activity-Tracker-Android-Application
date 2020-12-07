@@ -50,6 +50,29 @@
                 android:inputType="number"
                 android:hint="VALUE" />
 
+
+            <EditText
+                android:id="@+id/updateStartLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="Start Location (optional)"
+                android:inputType="textMultiLine" />
+
+            <EditText
+                android:id="@+id/updateEndLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="End Location (optional)"
+                android:inputType="textMultiLine" />
+
             <EditText
                 android:id="@+id/updateActFeedback"
                 android:layout_width="wrap_content"
@@ -58,7 +81,7 @@
                 android:layout_marginLeft="10dp"
                 android:ems="10"
                 android:gravity="start|top"
-                android:hint="FEEDBACK"
+                android:hint="FEEDBACK (optional)"
                 android:inputType="textMultiLine" />
 
             <RatingBar
@@ -69,12 +92,12 @@
                 android:layout_marginLeft="10dp" />
 
             <Button
-                android:id="@+id/updateActLocations"
-                android:layout_width="200dp"
+                android:id="@+id/updateViewLocations"
+                android:layout_width="241dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:text="UPDATE LOCATIONS" />
+                android:text="VIEW ACTIVITY ON MAP" />
 
             <Button
                 android:id="@+id/updateExistingAct"
@@ -82,7 +105,7 @@
                 android:layout_gravity="center"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="100dp"
                 android:text="UPDATE" />
 
             <Button
