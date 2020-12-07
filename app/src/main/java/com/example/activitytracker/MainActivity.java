@@ -27,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,12 +40,13 @@ import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
     DatabaseReference dbActivities;
     ListView listViewActivities;
     private DatePickerDialog.OnDateSetListener onDateSetListener;
 
     List<UserActivity> userActivityList;
+
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,19 +76,21 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
 
         dbActivities.addValueEventListener(new ValueEventListener() {
-
             //GETTING ALL THE ACTIVITIES DATA FROM THE FIREBASE DB
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
+                System.out.println(mAuth.getCurrentUser().getUid());
                 userActivityList.clear(); //because each time this is called, it will get you the entire list
 
                 //read the values from firebase db
                 for(DataSnapshot d : dataSnapshot.getChildren()){
-                    UserActivity userActivity = d.getValue(UserActivity.class);
-                    userActivityList.add(userActivity);
-                }
+                    //getting user activities based on user id
+                    if(d.child("userId").getValue(String.class).equals(mAuth.getCurrentUser().getUid())){
+                        UserActivity userActivity = d.getValue(UserActivity.class);
+                        userActivityList.add(userActivity);
+                    }
 
+                }
                 ActivityList adapter = new ActivityList(MainActivity.this, userActivityList);
                 listViewActivities.setAdapter(adapter);
             }
@@ -114,7 +118,11 @@ public class MainActivity extends AppCompatActivity {
         dialogBuilder.setView(dialogView);
 
         final EditText name = (EditText) dialogView.findViewById(R.id.updateActName);
+        //populate the form by the incoming values
+        name.setText(actName);
         final EditText date = (EditText) dialogView.findViewById(R.id.updateActDate);
+        //populate the form by the incoming values
+        date.setText(actDate);
 
         date.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,10 +153,51 @@ public class MainActivity extends AppCompatActivity {
         };
 
         final Spinner type = (Spinner) dialogView.findViewById(R.id.updateActType);
+        //populate the form by the incoming values
+        int selectionNumber=0;
+        if(actType.equals("Miles")){
+            selectionNumber = 0;
+        }
+        else if(actType.equals("Pounds")){
+            selectionNumber = 1;
+        }
+        else if(actType.equals("Minutes")){
+            selectionNumber = 2;
+        }
+        else if(actType.equals("Count")){
+            selectionNumber = 3;
+        }
+        else if(actType.equals("Steps")){
+            selectionNumber = 4;
+        }
+        else if(actType.equals("Days")){
+            selectionNumber = 5;
+        }
+
+        type.setSelection(selectionNumber);
+
         final EditText value = (EditText) dialogView.findViewById(R.id.updateActValue);
+        //populate the form by the incoming values
+        value.setText(actValue);
+
         final EditText feedback = (EditText) dialogView.findViewById(R.id.updateActFeedback);
+        //populate the form by the incoming values
+        feedback.setText(actFeedback);
+
+        final EditText startLocation = (EditText) dialogView.findViewById(R.id.updateStartLocation);
+        //populate the form by the incoming values
+        startLocation.setText(actStartLocation);
+
+        final EditText endLocation = (EditText) dialogView.findViewById(R.id.updateEndLocation);
+        //populate the form by the incoming values
+        endLocation.setText(actEndLocation);
 
         final RatingBar rating = (RatingBar) dialogView.findViewById(R.id.updateActRating);
+        //populate the form by the incoming values
+        rating.setRating(actRating);
+
+        final Button buttonViewLocations = (Button) dialogView.findViewById(R.id.updateViewLocations);
+
         final Button buttonUpdate = (Button) dialogView.findViewById(R.id.updateExistingAct);
         final Button buttonDelete = (Button) dialogView.findViewById(R.id.deleteExistingAct);
 
@@ -157,35 +206,56 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog alertDialog = dialogBuilder.create();
         alertDialog.show();
 
+        //MAP
+        buttonViewLocations.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(com.example.activitytracker.MainActivity.this, MapActivity.class);
+                String startLoc = actStartLocation;
+                String endLoc = actEndLocation;
+
+                Bundle bundle = new Bundle();
+                bundle.putString("start", startLoc);
+                bundle.putString("end", endLoc);
+
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+
         buttonUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String actName = name.getText().toString().trim();
-                String actDate = date.getText().toString().trim();
-                String actValue = value.getText().toString().trim();
+                String updActName = name.getText().toString().trim();
+                String updActDate = date.getText().toString().trim();
+                String updActValue = value.getText().toString().trim();
 
-                String actType = type.getSelectedItem().toString();
+                String updActType = type.getSelectedItem().toString();
 
-                String actFeedback = feedback.getText().toString().trim();
-                float actRating = (float) rating.getRating();
+                String updActFeedback = feedback.getText().toString().trim();
 
-                if(TextUtils.isEmpty(actName)){
+                String updStartLoc = startLocation.getText().toString().trim();
+                String updAEndLoc = endLocation.getText().toString().trim();
+
+                float updActRating = (float) rating.getRating();
+
+                if(TextUtils.isEmpty(updActName)){
                     name.setError("Name required");
                     name.requestFocus();
                     return;
                 }
-                else if(TextUtils.isEmpty(actDate)){
+                else if(TextUtils.isEmpty(updActDate)){
                     date.setError("Date required");
                     date.requestFocus();
                     return;
                 }
-                else if(TextUtils.isEmpty(actValue)) {
+                else if(TextUtils.isEmpty(updActValue)) {
                     value.setError("Value required");
                     value.requestFocus();
                     return;
                 }
                 else{
-                    updateActivity(actId, actName, actDate, actType, actValue, actFeedback, actRating, actStartLocation, actEndLocation);
+                    updateActivity(actId, updActName, updActDate, updActType, updActValue, updActFeedback, updActRating, updStartLoc, updAEndLoc);
                     alertDialog.dismiss();
                 }
             }
@@ -206,6 +276,8 @@ public class MainActivity extends AppCompatActivity {
         databaseReference.removeValue();
 
         Toast.makeText(this, "Activity Deleted!", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(com.example.activitytracker.MainActivity.this, NavBarActivity.class);
+        startActivity(intent);
     }
 
     //updating in db
@@ -213,14 +285,19 @@ public class MainActivity extends AppCompatActivity {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("activities").child(actId); // ID of the activity that is to be updated
         //we have referenced the activity using the ID
 
-        UserActivity userActivity = new UserActivity("1", actId, actName, actDate, actValue, actType, actFeedback, actRating, actStartLocation, actEndLocation);
+        //USER ID ADDED
+        UserActivity userActivity = new UserActivity((mAuth.getCurrentUser()).getUid(), actId, actName, actDate, actValue, actType, actFeedback, actRating, actStartLocation, actEndLocation);
 
         databaseReference.setValue(userActivity);
 
         Toast.makeText(this,"Activity Updated!", Toast.LENGTH_SHORT).show();
 
+        Intent intent = new Intent(com.example.activitytracker.MainActivity.this, NavBarActivity.class);
+        startActivity(intent);
+
         return true;
     }
+
 }
 
 

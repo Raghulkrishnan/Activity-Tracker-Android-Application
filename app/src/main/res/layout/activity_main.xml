@@ -54,6 +54,30 @@
                 android:inputType="number" />
 
             <EditText
+                android:id="@+id/editTextActStartLoc"
+                android:layout_width="315dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="25dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="START LOCATION (optional)"
+                android:inputType="textMultiLine" />
+
+            <EditText
+                android:id="@+id/editTextActEndLoc"
+                android:layout_width="315dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="25dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="END LOCATION (optional)"
+                android:inputType="textMultiLine" />
+
+            <EditText
                 android:id="@+id/editTextActFeedback"
                 android:layout_width="315dp"
                 android:layout_height="wrap_content"
@@ -62,7 +86,7 @@
                 android:layout_marginBottom="25dp"
                 android:ems="10"
                 android:gravity="start|top"
-                android:hint="FEEDBACK"
+                android:hint="FEEDBACK (optional)"
                 android:inputType="textMultiLine" />
 
             <RatingBar
@@ -72,15 +96,6 @@
                 android:layout_height="47dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp" />
-
-            <Button
-                android:id="@+id/actAddLocations"
-                android:layout_width="281dp"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:text="ADD LOCATION" />
 
             <Button
                 android:id="@+id/actAddActivity"

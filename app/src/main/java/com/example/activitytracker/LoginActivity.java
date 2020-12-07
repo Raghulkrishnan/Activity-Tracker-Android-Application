@@ -1,5 +1,8 @@
 package com.example.activitytracker;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -7,13 +10,12 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.net.Inet4Address;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -57,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
                     if(task.isSuccessful()){
 //                        finish(); // cannot come back to login page by clicking back button
                         loginProgressBar.setVisibility(View.GONE);
-                        Intent intent = new Intent(com.example.activitytracker.LoginActivity.this, WelcomeActivity.class);
+                        Intent intent = new Intent(com.example.activitytracker.LoginActivity.this, NavBarActivity.class);
 //                        //when clicked back after logging in, page should not come out of the app.so using addFlags method
 //                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);

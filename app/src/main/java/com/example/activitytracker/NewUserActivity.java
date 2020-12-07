@@ -17,9 +17,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.security.Provider;
 import java.util.Calendar;
 
 public class NewUserActivity extends AppCompatActivity {
@@ -31,14 +33,17 @@ public class NewUserActivity extends AppCompatActivity {
     TextView actDate;
     EditText actValue;
     EditText actFeedback;
+    EditText actStartLoc;
+    EditText actEndLoc;
 
     Spinner actType;
     RatingBar actRating;
 
-    Button addLocations;
     Button addActivity;
 
     DatabaseReference dbActivities;
+
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,10 +84,12 @@ public class NewUserActivity extends AppCompatActivity {
 
         actValue = (EditText) findViewById(R.id.editTextActValue);
         actFeedback = (EditText) findViewById(R.id.editTextActFeedback);
+        actStartLoc = (EditText) findViewById(R.id.editTextActStartLoc);
+        actEndLoc = (EditText) findViewById(R.id.editTextActEndLoc);
 
         actRating = (RatingBar) findViewById(R.id.actRatingBar);
 
-        addLocations = (Button) findViewById(R.id.actAddLocations);
+//        addLocations = (Button) findViewById(R.id.actAddLocations);
         addActivity = (Button) findViewById(R.id.actAddActivity);
         actType = (Spinner) findViewById(R.id.activityType);
 
@@ -91,10 +98,17 @@ public class NewUserActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 addActivity();
-//                Intent intent = new Intent(com.example.activitytracker.NewUserActivity.this, MainActivity.class);
-//                startActivity(intent);
             }
         });
+
+//        LOCATIONS
+//        addLocations.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(com.example.track_act.NewUserActivity.this, MapActivity.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 
     //adding in db
@@ -106,6 +120,8 @@ public class NewUserActivity extends AppCompatActivity {
         String type = actType.getSelectedItem().toString();
 
         String feedback = actFeedback.getText().toString().trim();
+        String startLocation = actStartLoc.getText().toString().trim();
+        String endLocation = actEndLoc.getText().toString().trim();
         float rating = (float) actRating.getRating();
 
         if(TextUtils.isEmpty(name)){
@@ -127,11 +143,17 @@ public class NewUserActivity extends AppCompatActivity {
         else{
             String id = dbActivities.push().getKey(); //every time you add an activity an unique id will be generated here. so it wont overwrite existing activity
 
-            UserActivity userActivity = new UserActivity("1", id, name,date,value,type,feedback,rating,"","");
+            //user id
+            final String UID = (mAuth.getCurrentUser()).getUid();
+
+            //USER ID ADDED
+            UserActivity userActivity = new UserActivity(UID, id, name,date,value,type,feedback,rating,startLocation,endLocation);
 
             dbActivities.child(id).setValue(userActivity); //setting the activity in the activity tree inside the db - thats why - db.child(id).set..
 
             Toast.makeText(this, "Activity Added", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(com.example.activitytracker.NewUserActivity.this, NavBarActivity.class);
+            startActivity(intent);
         }
 
     }
