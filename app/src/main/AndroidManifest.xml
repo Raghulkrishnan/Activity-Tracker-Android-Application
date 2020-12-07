@@ -13,6 +13,9 @@
         <activity android:name=".NewGoalActivity"></activity>
         <activity android:name=".NewUserActivity"></activity>
         <activity android:name=".RegisterUserActivity"></activity>
+        <activity android:name=".MainGoalActivity"></activity>
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".ProfileActivity"></activity>
 
         <activity android:name=".SplashActivity">
             <intent-filter>
@@ -20,14 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".LoginActivity" />
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-<!--        </activity>-->
     </application>
 
 </manifest>

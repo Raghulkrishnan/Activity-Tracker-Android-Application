@@ -47,8 +47,8 @@ public class NewGoalActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 addGoal();
-//                Intent intent = new Intent(NewGoalActivity.this, MainGoalActivity.class);
-//                startActivity(intent);
+                Intent intent = new Intent(NewGoalActivity.this, MainGoalActivity.class);
+                startActivity(intent);
             }
         });
     }

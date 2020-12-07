@@ -151,4 +151,50 @@ public class ProfileActivity extends AppCompatActivity {
             }
         }
     }
+
+    //changing password
+    public void resetPwdBtnClick(View view){
+        final EditText resetPassword = new EditText(view.getContext());
+
+        final AlertDialog.Builder pwdResetDialog = new AlertDialog.Builder(view.getContext());
+
+        pwdResetDialog.setTitle("Reset Password?");
+        pwdResetDialog.setMessage("Enter new password");
+        pwdResetDialog.setView(resetPassword);
+
+        pwdResetDialog.setPositiveButton("YES", (dialogInterface, i) -> {
+            String newPwd = resetPassword.getText().toString().trim();
+
+            //firebase auth update password method
+            user.updatePassword(newPwd).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Toast.makeText(getApplicationContext(), "Password changed successfully. Login again!", Toast.LENGTH_SHORT).show();
+                    FirebaseAuth.getInstance().signOut();
+                    finish();
+                    Intent intent = new Intent(com.example.activitytracker.ProfileActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(getApplicationContext(), "Password change FAILED! Try later.", Toast.LENGTH_SHORT).show();
+                }
+            });
+        });
+
+        pwdResetDialog.setNegativeButton("NO", (dialogInterface, i) -> {
+            //close
+        });
+
+        pwdResetDialog.create().show();
+    }
+
+    //logout from the application
+    public void logoutBtnClick(View view){
+        FirebaseAuth.getInstance().signOut();
+        finish();
+        Intent intent = new Intent(com.example.activitytracker.ProfileActivity.this, LoginActivity.class);
+        startActivity(intent);
+    }
 }
