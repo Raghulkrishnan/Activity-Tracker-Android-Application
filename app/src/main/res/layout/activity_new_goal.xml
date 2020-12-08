@@ -47,7 +47,7 @@
                 android:layout_marginBottom="25dp"
                 android:ems="10"
                 android:gravity="start|top"
-                android:hint="FEEDBACK"
+                android:hint="FEEDBACK (Optional) "
                 android:inputType="textMultiLine" />
 
             <RatingBar
