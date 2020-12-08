@@ -23,32 +23,34 @@
             android:layout_weight="0.0" />
 
         <RadioGroup
-            android:gravity="center_vertical"
-            android:layout_gravity="bottom"
-            android:orientation="horizontal"
             android:id="@+id/mainRadio"
-            android:background="#DDF2561F"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="64dp"
+            android:layout_gravity="bottom"
+            android:background="#DDF2561F"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <RadioButton
                 android:id="@+id/radioBtnActivity"
+                style="@style/main_tab_bottom"
                 android:layout_marginTop="2.0dip"
-                android:text="Activity"
                 android:drawableTop="@drawable/icon_1_n"
-                style="@style/main_tab_bottom" />
+                android:text="Activity" />
+
             <RadioButton
                 android:id="@+id/radioBtnGoal"
+                style="@style/main_tab_bottom"
                 android:layout_marginTop="2.0dip"
-                android:text="Goal"
                 android:drawableTop="@drawable/icon_2_n"
-                style="@style/main_tab_bottom" />
+                android:text="Goal" />
+
             <RadioButton
                 android:id="@+id/radioBtnProfile"
+                style="@style/main_tab_bottom"
                 android:layout_marginTop="2.0dip"
-                android:text="Profile"
                 android:drawableTop="@drawable/icon_3_n"
-                style="@style/main_tab_bottom" />
+                android:text="Profile" />
         </RadioGroup>
 
     </LinearLayout>

@@ -6,16 +6,16 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="189dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
+                android:layout_height="102dp"
                 android:layout_marginTop="4dp"
                 android:layout_weight="1"
                 android:id="@+id/goalGif"
@@ -30,15 +30,15 @@
                 android:layout_marginTop="10dp"
                 android:onClick="homeAddGoalBtn"
                 android:text="+ Add New Goal" />
-
-            <ListView
-                android:id="@+id/listViewGoals"
-                android:layout_width="wrap_content"
-                android:layout_gravity="center"
-                android:layout_height="486dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp" />
         </LinearLayout>
     </ScrollView>
+
+    <ListView
+        android:id="@+id/listViewGoals"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_height="435dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp" />
 </LinearLayout>
