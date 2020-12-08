@@ -20,12 +20,15 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -46,12 +49,23 @@ public class MainActivity extends AppCompatActivity {
 
     List<UserActivity> userActivityList;
 
+    //Gif
+    ImageView actGif;
+
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        actGif = (ImageView) findViewById((R.id.actGif));
+        //for Gif file  - using Glide Library
+        Glide.with(MainActivity.this) //activity name
+                .load(R.drawable.act_gif) //GIF url
+                .crossFade()
+                .diskCacheStrategy(DiskCacheStrategy.ALL) //Store in cache
+                .into(actGif); //set on image view
 
         //getting from db
         dbActivities = FirebaseDatabase.getInstance().getReference("activities");

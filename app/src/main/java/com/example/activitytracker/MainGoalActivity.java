@@ -16,11 +16,14 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -36,6 +39,8 @@ public class MainGoalActivity extends AppCompatActivity {
 
     DatabaseReference dbGoals;
     ListView listViewGoals;
+    //Gif
+    ImageView goalGif;
 
     List<Goal> goalList;
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -44,6 +49,13 @@ public class MainGoalActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_goal);
+        goalGif = (ImageView) findViewById((R.id.goalGif));
+        //for Gif file  - using Glide Library
+        Glide.with(MainGoalActivity.this) //activity name
+                .load(R.drawable.goal_gif) //GIF url
+                .crossFade()
+                .diskCacheStrategy(DiskCacheStrategy.ALL) //Store in cache
+                .into(goalGif); //set on image view
 
         //getting from db
         dbGoals = FirebaseDatabase.getInstance().getReference("goals");

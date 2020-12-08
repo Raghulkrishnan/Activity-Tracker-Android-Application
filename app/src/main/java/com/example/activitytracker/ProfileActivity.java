@@ -1,5 +1,6 @@
 package com.example.activitytracker;
 
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,14 +8,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -28,15 +30,27 @@ public class ProfileActivity extends AppCompatActivity {
     EditText profileFName, profileLName, profileEmail;
 
     TextView emailVerified;
+    //Gif
+    ImageView profileGif;
 
     FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        profileGif = (ImageView) findViewById((R.id.profileGif));
+
+        //for Gif file  - using Glide Library
+        Glide.with(ProfileActivity.this) //activity name
+                .load(R.drawable.profile_gif) //GIF url
+                .crossFade()
+                .diskCacheStrategy(DiskCacheStrategy.ALL) //Store in cache
+                .into(profileGif); //set on image view
 
         profileFName = (EditText) findViewById(R.id.profileFName);
+
         profileLName = (EditText) findViewById(R.id.profileLName);
+
         profileEmail = (EditText) findViewById(R.id.profileEmail);
 
         emailVerified = (TextView) findViewById(R.id.emailVerified);
@@ -74,6 +88,7 @@ public class ProfileActivity extends AppCompatActivity {
             emailVerified.setText("Email Verified");
         }
         else{
+
             emailVerified.setTextColor(Color.RED);
             emailVerified.setText("Email not verified (click here to verify)");
             emailVerified.setOnClickListener(new View.OnClickListener() {
