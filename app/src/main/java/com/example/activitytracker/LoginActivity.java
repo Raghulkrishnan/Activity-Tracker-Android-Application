@@ -60,8 +60,8 @@ public class LoginActivity extends AppCompatActivity {
 //                        finish(); // cannot come back to login page by clicking back button
                         loginProgressBar.setVisibility(View.GONE);
                         Intent intent = new Intent(com.example.activitytracker.LoginActivity.this, NavBarActivity.class);
-//                        //when clicked back after logging in, page should not come out of the app.so using addFlags method
-//                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                      //when clicked back after logging in, page should not come out of the app.so using addFlags method
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                     }
                     else{
@@ -74,15 +74,15 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     //checking if the user is already logged in - then send him in directly.
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//
-//        if(mAuth.getCurrentUser()!=null){
-//            finish();
-//            startActivity(new Intent(this, ProfileActivity.class ));
-//        }
-//    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if(mAuth.getCurrentUser()!=null){
+            finish();
+            startActivity(new Intent(this, NavBarActivity.class ));
+        }
+    }
 
     public void loginOnSignUpClick(View view){
         Intent intent = new Intent(com.example.activitytracker.LoginActivity.this, RegisterUserActivity.class);
