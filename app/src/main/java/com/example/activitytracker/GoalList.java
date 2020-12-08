@@ -10,7 +10,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class GoalList extends ArrayAdapter<Goal> {
     private Activity context;
@@ -29,13 +33,17 @@ public class GoalList extends ArrayAdapter<Goal> {
 
         View listViewItem = inflater.inflate(R.layout.goal_list_layout, null, true);
 
+        Date c = Calendar.getInstance().getTime();
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());
+        String formattedDate = df.format(c);
+
         TextView textViewGoalName= (TextView) listViewItem.findViewById(R.id.textViewGoalName);
         TextView textViewGoalRoutine = (TextView) listViewItem.findViewById(R.id.textViewGoalRoutine);
         TextView textViewGoalStatus = (TextView) listViewItem.findViewById(R.id.textViewGoalStatus);
 
         Goal goal = goalList.get(position);
 
-        textViewGoalName.setText(goal.getName());
+        textViewGoalName.setText(goal.getName() + " " + " (" + formattedDate + ")");
         textViewGoalRoutine.setText(goal.getRoutine());
         textViewGoalStatus.setText(goal.getStatus());
 
