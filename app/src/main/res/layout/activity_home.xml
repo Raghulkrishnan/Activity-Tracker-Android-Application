@@ -16,7 +16,7 @@
             <ImageView
                 android:id="@+id/actGif"
                 android:layout_width="match_parent"
-                android:layout_height="102dp"
+                android:layout_height="100dp"
                 android:layout_marginTop="4dp"
                 android:layout_weight="1"
                 android:scaleType="centerCrop" />
@@ -24,12 +24,21 @@
             <Button
                 android:id="@+id/homeAddActivity"
                 android:layout_width="282dp"
-                android:layout_height="62dp"
+                android:layout_height="55dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:onClick="homeAddActivityBtn"
                 android:text="+ Add New Activity" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/homeSteps"
+                android:text="0"
+                android:textSize="15dp"
+                android:textColor="@android:color/background_dark"
+                android:gravity="center_horizontal" />
 
         </LinearLayout>
     </ScrollView>
@@ -37,10 +46,9 @@
     <ListView
         android:id="@+id/listViewActivities"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="430dp"
         android:layout_gravity="center"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="30dp" />
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="10dp" />
 </LinearLayout>
