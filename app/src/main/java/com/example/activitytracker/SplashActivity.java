@@ -25,6 +25,6 @@ public class SplashActivity extends AppCompatActivity {
 
                 finish();
             }
-        }, 5000); //setting the timer for 5 seconds
+        }, 3000); //setting the timer for 3 seconds
     }
 }
