@@ -6,9 +6,14 @@ import androidx.fragment.app.Fragment;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -49,7 +54,7 @@ can add the details of the new activity to be logged in.
 This page also has a feature that will allow the user to long press on any of the activities in the list to open a dialog box in which
 the user can edit or delete the activity from their list.
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SensorEventListener{
     DatabaseReference dbActivities;
     ListView listViewActivities;
     private DatePickerDialog.OnDateSetListener onDateSetListener;
@@ -58,6 +63,19 @@ public class MainActivity extends AppCompatActivity {
 
     //Gif
     ImageView actGif;
+
+    //Sensor
+    private SensorManager mSensorManager;
+    private Sensor mAccelerometer;
+    private TextView count;
+    private int stepsCount = 0;
+
+    private double mLastX;
+    private double mLastY;
+    private double mLastZ;
+
+    private final float NOISE = (float) 2.5;
+    private boolean mInitialized; // used to initialize sensor just once
 
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
@@ -73,6 +91,14 @@ public class MainActivity extends AppCompatActivity {
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .into(actGif); //set on image view
+
+        //sensor
+        count = findViewById(R.id.homeSteps);
+        // Initialize Accelerometer sensor
+        mInitialized = false;
+        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_GRAVITY);
+        startSensor();
 
         //getting from db
         dbActivities = FirebaseDatabase.getInstance().getReference("activities");
@@ -318,7 +344,79 @@ public class MainActivity extends AppCompatActivity {
 
         return true;
     }
+    //------------------------------------
+//    ---------------------------------
+    //SENSOR
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
 
+    private void startSensor() {
+        mLastX = 0.0;
+        mLastY = 0.0;
+        mLastZ = 0.0;
+        mSensorManager.registerListener((SensorEventListener) this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        // event object contains values of acceleration, read those
+        double x;
+        double y;
+        double z;
+        final double alpha = 0.8; // constant for our filter below
+
+        double[] gravity = {0,0,0};
+
+        // Isolate the force of gravity with the low-pass filter.
+        gravity[0] = alpha * gravity[0] + (1 - alpha) * event.values[0];
+        gravity[1] = alpha * gravity[1] + (1 - alpha) * event.values[1];
+        gravity[2] = alpha * gravity[2] + (1 - alpha) * event.values[2];
+
+        // Remove the gravity contribution with the high-pass filter.
+        x = event.values[0] - gravity[0];
+        y = event.values[1] - gravity[1];
+        z = event.values[2] - gravity[2];
+
+        if (mInitialized) {
+            double deltaX = Math.abs(mLastX - x);
+            double deltaY = Math.abs(mLastY - y);
+            double deltaZ = Math.abs(mLastZ - z);
+            if (deltaX < NOISE)
+                deltaX = (float) 0.0;
+            if (deltaY < NOISE)
+                deltaY = (float) 0.0;
+            if (deltaZ < NOISE)
+                deltaZ = (float) 0.0;
+            mLastX = x;
+            mLastY = y;
+            mLastZ = z;
+
+            if ((deltaZ > deltaX) && (deltaZ > deltaY)) {
+                stepsCount = stepsCount + 1;
+                if (stepsCount > 0) {
+                    count.setText(String.valueOf(stepsCount));
+                }
+            }
+        } else {
+            mLastX = x;
+            mLastY = y;
+            mLastZ = z;
+            mInitialized = true;
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+    }
 }
 
 
