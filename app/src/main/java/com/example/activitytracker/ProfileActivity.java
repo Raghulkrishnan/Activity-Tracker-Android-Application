@@ -24,7 +24,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
-
+/*
+The ProfileActivity class has the information about the user such as, user's first name, last name, email id
+along with the link to verify user's email id to validate if the user is using an existing email id
+This page also allows you to change your password. By updating the new password, user is automatically logged out of the application
+There is a logout button on this page to sign out from the application.
+ */
 public class ProfileActivity extends AppCompatActivity {
     FirebaseUser user;
     EditText profileFName, profileLName, profileEmail;

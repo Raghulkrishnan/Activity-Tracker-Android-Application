@@ -17,6 +17,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+/* The NewGoalActivity page has a function to manage the add new goal button and to display the activity_new_goal xml page
+The user can make selection for all of the fields such as goal name from a set of predefined goals, along with the routine, status, rating.
+The add goal button on this page adds all of the selections made to the database
+ */
 public class NewGoalActivity extends AppCompatActivity {
     Spinner goalName;
     Spinner goalRoutine;

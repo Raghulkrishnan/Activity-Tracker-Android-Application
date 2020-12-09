@@ -18,7 +18,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.database.FirebaseDatabase;
-
+/*This RegisterUserActivity has a function to manage the sign up button and to display the activity_register_user xml page
+The fields are validated to accept a valid and an existing user from the firebase DB and if password meets the following specifications.
+ If the user meets all the requirements, the user is registered successfully
+ and allowed to enter the home page of the application
+ */
 public class RegisterUserActivity extends AppCompatActivity {
 
     EditText registerFName, registerLName,  registerAge, registerEmail, registerCreatePwd, registerConfirmPwd;
@@ -60,6 +64,7 @@ public class RegisterUserActivity extends AppCompatActivity {
         String pwd = registerCreatePwd.getText().toString().trim();
         String confirmPwd = registerConfirmPwd.getText().toString().trim();
 
+        //Validations for the registration page
         if(fName.isEmpty()){
             registerFName.setError("First name required");
             registerFName.requestFocus();

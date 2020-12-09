@@ -23,7 +23,10 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.security.Provider;
 import java.util.Calendar;
-
+/* The NewUserActivity page has a function to manage the add new activity button and to display the activity_main xml page
+The user can enter all of the activity details such as activity name, date, value, feedback, start and end location of the activity along with the rating
+The add activity button on this page adds all of the fields entered to the database
+ */
 public class NewUserActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
