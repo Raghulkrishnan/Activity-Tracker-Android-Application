@@ -16,6 +16,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+/*
+This class will extend the array adapter and by doing so will be able to get an array list in its constructor
+and that list can be used to get a list view using the list xml page.
+The IDs on the goal list xml page can be used to populate each row of the list with the goal values from the
+array list coming in from the constructor
+ */
 public class GoalList extends ArrayAdapter<Goal> {
     private Activity context;
     private List<Goal> goalList;

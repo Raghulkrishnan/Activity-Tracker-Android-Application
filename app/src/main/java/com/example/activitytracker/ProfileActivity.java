@@ -44,7 +44,7 @@ public class ProfileActivity extends AppCompatActivity {
         Glide.with(ProfileActivity.this) //activity name
                 .load(R.drawable.profile_gif) //GIF url
                 .crossFade()
-                .diskCacheStrategy(DiskCacheStrategy.ALL) //Store in cache
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .into(profileGif); //set on image view
 
         profileFName = (EditText) findViewById(R.id.profileFName);
@@ -194,7 +194,7 @@ public class ProfileActivity extends AppCompatActivity {
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(getApplicationContext(), "Password change FAILED! Try later.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "FAILED! Password must be minimum 6 characters", Toast.LENGTH_SHORT).show();
                 }
             });
         });

@@ -42,6 +42,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+/*
+The Glide library is used to display the gif at the top of the page using the ImageView.
+The activity list is displayed on the page and a Add New Activity button is present which when clicked will open the NewUserActivity page where the user
+can add the details of the new activity to be logged in.
+This page also has a feature that will allow the user to long press on any of the activities in the list to open a dialog box in which
+the user can edit or delete the activity from their list.
+ */
 public class MainActivity extends AppCompatActivity {
     DatabaseReference dbActivities;
     ListView listViewActivities;
@@ -64,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         Glide.with(MainActivity.this) //activity name
                 .load(R.drawable.act_gif) //GIF url
                 .crossFade()
-                .diskCacheStrategy(DiskCacheStrategy.ALL) //Store in cache
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .into(actGif); //set on image view
 
         //getting from db

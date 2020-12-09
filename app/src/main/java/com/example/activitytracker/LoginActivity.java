@@ -17,6 +17,11 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.net.Inet4Address;
 
+/*
+This LoginActivity has a function to manage the sign in and sign up buttons and to display the sign in page xml
+The fields are validated to accept a valid and an existing user from the firebase DB and is password protected. If the login is successful, the user is
+allowed to enter the home of the application
+ */
 public class LoginActivity extends AppCompatActivity {
 
     EditText loginEmail, loginPwd;

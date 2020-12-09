@@ -13,7 +13,12 @@ import androidx.annotation.Nullable;
 import org.w3c.dom.Text;
 
 import java.util.List;
-
+/*
+This class will extend the array adapter and by doing so will be able to get an array list in its constructor
+and that list can be used to get a list view using the list xml page.
+The IDs on that list xml page can be used to populate each row of the list with the values from the
+array list coming in from the constructor
+ */
 public class ActivityList extends ArrayAdapter<UserActivity> {
     private Activity context;
     private List<UserActivity> userActivityList;

@@ -1,5 +1,10 @@
 package com.example.activitytracker;
 
+/*
+The Goal class has the information about the Goal such has the goal ID, name, routine, status, feedback and rating
+These can be called using the setters and getters to set and get their values by creating an object of this Goal class
+and calling the methods using the created object.
+ */
 public class Goal {
     private String userId;
     private String goalId;

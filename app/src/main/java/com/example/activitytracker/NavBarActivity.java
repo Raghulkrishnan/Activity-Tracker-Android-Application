@@ -9,6 +9,11 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.RadioButton;
 import android.widget.TabHost;
 
+/*
+The navigation bar is used to navigate to all the pages in the application. The navigation bar
+has 3 tabs -activity, goal and profile which when clicked will open that respective page view for the user.
+Once logged in, the user will be navigated to this navbar page - that has the three tabs and page navigations.
+ */
 public class NavBarActivity extends TabActivity implements OnCheckedChangeListener{
 
     private TabHost mTabHost;

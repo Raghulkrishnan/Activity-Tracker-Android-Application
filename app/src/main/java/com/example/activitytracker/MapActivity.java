@@ -20,6 +20,12 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.io.IOException;
 import java.util.List;
 
+/*
+The onMapReady will open the bundle that has been sent from the MainActivity page, which will have the locations string added by the user.
+This location can be used in the getLocationFromAddress method and using the geocoder, the lat and longitudes of the locations can be obtained
+Once obtained, a marker can be added on the map, plotting the locations on the map. This can be used by the user to see the location they have
+added - on the google map using the google map API. API key has been generated and has been added in the manifest file.
+ */
 public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private static final String TAG = "testing";

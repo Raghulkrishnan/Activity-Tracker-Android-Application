@@ -71,10 +71,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="60dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="120dp"
                 android:onClick="resetPwdBtnClick"
                 android:text="CHANGE PASSWORD" />
 
+            <TextView
+                android:layout_marginLeft="60dp"
+                android:textSize="15sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="120dp"
+                android:text="Password - minimum 6 characters required*"/>
 
             <Button
                 android:id="@+id/saveProfileBtn"

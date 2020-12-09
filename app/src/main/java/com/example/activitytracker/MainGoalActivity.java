@@ -35,6 +35,14 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+/*
+The Glide library is used to display the gif at the top of the page using the ImageView.
+The goal list is displayed on the page and a Add New Goal button is present which when clicked will open the NewGoalActivity page where the user
+can add a new goal and log it in which they can monitor any time they log into the application. This goal has the name, routine and status of the goal
+along with feedback and rating which is optional for the user.
+This page also has a feature that will allow the user to long press on any of the activities in the list to open a dialog box in which
+the user can edit or delete the activity from their list.
+ */
 public class MainGoalActivity extends AppCompatActivity {
 
     DatabaseReference dbGoals;
@@ -54,7 +62,7 @@ public class MainGoalActivity extends AppCompatActivity {
         Glide.with(MainGoalActivity.this) //activity name
                 .load(R.drawable.goal_gif) //GIF url
                 .crossFade()
-                .diskCacheStrategy(DiskCacheStrategy.ALL) //Store in cache
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .into(goalGif); //set on image view
 
         //getting from db
