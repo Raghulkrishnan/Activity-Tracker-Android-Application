@@ -3,7 +3,10 @@ package com.example.activitytracker;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-
+/*The SplashActivity class can be used to add a splash screen for the application
+by setting the time for the splash screen to appear for five seconds
+Once timer is completed, the intent will load your Login Page through the LoginActivity class
+ */
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SplashActivity extends AppCompatActivity {
@@ -22,6 +25,6 @@ public class SplashActivity extends AppCompatActivity {
 
                 finish();
             }
-        }, 5000);
+        }, 5000); //setting the timer for 5 seconds
     }
 }

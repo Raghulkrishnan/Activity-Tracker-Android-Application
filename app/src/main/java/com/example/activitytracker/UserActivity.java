@@ -1,5 +1,10 @@
 package com.example.activitytracker;
-
+/*
+The UserActivity class has the information about any activity the user performs such as name of the activity, date on which user performed the activity
+appropriate values and it's type, user's feedback, rating using the rating bar, start and end location where the activity was perfomed
+These can be called using the setters and getters to set and get their values by creating an object of this UserActivity class
+and calling the methods using the created object.
+ */
 public class UserActivity {
     String userId;
     String activityId;

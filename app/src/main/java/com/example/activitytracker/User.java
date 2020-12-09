@@ -1,7 +1,10 @@
 package com.example.activitytracker;
 
 import java.util.List;
-
+/*The User class has the information about the User such has the user ID, first name, last name, gender, age, username and password
+These can be called using the setters and getters to set and get their values by creating an object of this User class
+and calling the methods using the created object.
+ */
 public class User {
     private String userId;
     private String firstName;
