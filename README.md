@@ -21,6 +21,7 @@ The same user ID cannot be used to create another account when one exists alread
 Authentication is secure as the details are encrypted in the Firebase DB
 
 Technologies Used:
+
 XML
 JAVA
 Android Studio
